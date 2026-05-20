@@ -1,0 +1,45 @@
+:root{
+    --text-color:#F7F7F4;
+    --accent-color:rgb(21, 17, 1);
+    --accent-hover-color:rgb(146, 229, 146);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*
+For centre alignment for div.inMiddle
+</>
+.inMiddle {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 200px;
+    height: 100px;
+    background: lightblue;
+}
+*/
+
+/*body flexbox approach*/
+body{
+    background-color:rgb(52, 46, 46);
+    color: rgb(232, 217, 174);
+    margin:0;
+    height: 100vh;
+    display: flex;
+    justify-content:center ; /*horizontal*/
+    align-items: center; /*vertical*/
+}
+
+li{
+    background-color: rgb(33, 83, 234);;
+    border-radius: 6px;
+    margin-bottom: 6px;
+}
+li:hover{
+    background-color: rgb(204, 93, 93);
+    cursor:pointer;
+}
