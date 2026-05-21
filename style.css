@@ -38,6 +38,9 @@ li{
     background-color: rgb(33, 83, 234);;
     border-radius: 6px;
     margin-bottom: 6px;
+    padding-left: 1px;
+    display: flex;
+    justify-content:space-between;
 }
 li:hover{
     background-color: rgb(216, 113, 113);
