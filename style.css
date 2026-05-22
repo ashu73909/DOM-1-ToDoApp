@@ -25,13 +25,14 @@ For centre alignment for div.inMiddle
 
 /*body flexbox approach*/
 body{
-    background-color:rgb(52, 46, 46);
+    background-color:white;/*rgb(52, 46, 46)*/
     color: rgb(232, 217, 174);
     margin:0;
-    height: 100vh;
+    min-height: 100vh;/*At least viewport height.*/
     display: flex;
     justify-content:center ; /*horizontal*/
     align-items: center; /*vertical*/
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 li{
@@ -45,4 +46,100 @@ li{
 li:hover{
     background-color: rgb(216, 113, 113);
     cursor:pointer;
+}
+/* ----------------------------------improving UI of main wrapper like cards---------------------------------------- */
+
+body>div:first-child{ /*selects div element that is very first child of body*/
+    max-width: 760px; /*the element will grow to take 90% of screen but stops growing once hit 760px*/
+    width: 90%;      /*make selected div element to take 90 % width of its parent(body)=> responsiveness */
+    /*for perfect middle*/
+    margin:0 auto;  /*horizontally center a block-level element within its parent, 0 sets top-bottom zero and auto lets browser calculate right and left margin equally*/
+    /*margin:0 auto; 
+    -> element must be a block-level element (like div, section, p).
+    -> element must have a defined width or max-width that is smaller than its container.
+    */
+    padding: 1rem 1.25rem; /*1rem=>top-bottom  1.25rem=>right-left  and -> It prevents your text or images from touching the borders of the container, making it look much cleaner.*/
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35); /* box-shadow:horizontal-offset vertical-offset blur-radius color; */
+    border: none;
+    outline:none;
+}
+
+/* -----------------------------------improving <input> element--------------------------------------- */
+
+#todoInput{
+   /*flex: 1; a shorthand property that makes a flex item grow to fill all available space in its container => used as tailwind in input
+    min-width:0; Without min-width: 0, your #quoteInput might refuse to shrink even if you have flex-shrink: 1 (the default) or flex-grow: 1. This often leads layout overflow ,
+   */
+    box-shadow: inset 0 -3px 10px rgba(0,0,0,0.18);
+    font-size: 1rem;
+    background: rgba(10, 13, 13, 0.04);
+    transition: box-shadow .15s ease, transform .08s ease;
+}
+#todoInput::placeholder{
+    color: rgba(247,247,244,0.75);
+    font-weight: 500;
+}
+
+/* ----------------------------------<button>---------------------------------------- */
+#createButton{
+    border: none;
+    outline: none;
+    border-radius: 999px;
+    color:rgb(33, 83, 234);;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    font-weight: 500;
+}
+
+/* ----------------------------------<ul>---------------------------------------- */
+/*margin: 5px auto; wifth:80%; => constrain an element to 80% of its parent's width and perfectly center it horizontally on the page
+  my-[5px] mx-auto w-4/5=> tailwind
+  for margin : auto; width:80%; => mx-auto w-4/5
+*/
+
+ul#ulId{
+    list-style: none;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 56vh;
+    overflow: auto;/* (Conditional Scrollbars)*/
+    /*
+    ->overflow: auto;=>Scrollbars appear only when necessary.If the content fits inside the container, no scrollbars are shown.
+    ->overflow: scroll; (Permanent Scrollbars) =>Scrollbars are always present, regardless of whether the content overflows or not.If the content fits, the scrollbars may appear disabled or empty, but they still occupy space in the layout.
+    */
+    padding: 0.25rem;
+}
+/* --------------------------------<li>------------------------------------------ */
+li{
+    padding: 0.7rem 0.9rem;
+    font-size: 0.98rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    transition: transform .16s ease, box-shadow .12s ease;
+}
+li:hover{
+    transform: translateX(2px);
+}
+/* ----------------------------------responsiveness=>media---------------------------------------- */
+@media (max-width:800px) {/*less than 800px viewport */
+    body{
+        flex-direction: column;
+        height: auto;/* tells the browser to let the body's height be determined by its content rather than a fixed measurement*/
+    }
+    body>div:first-child{
+        margin-top: 100px;
+        width: 100%;/*for mobiles*/
+    }
+    body>div:first-child >.flex{
+        flex-direction: column;
+        align-items: stretch;
+        gap:0.5rem;
+        padding:0.25rem;
+    }
 }

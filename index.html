@@ -13,15 +13,32 @@
 <body>
     <div class="pt-8 pb-10  rounded-xl border-2 border-black " style="transform: translateY(-20%); background-color: oklch(39.1% 0.09 240.876);">
 
-        <div class="flex flex-row items-center justify-center  px-16 py-2  mb-5" style="background-color: rgb(33, 83, 234);">
+        <div class="flex flex-row items-center justify-center gap-[0.6rem]  py-[1.6] px-[0.8]  mb-5" style="background-color: rgb(33, 83, 234);">
             <!--   <input id="" placholder="" value="" type="">  -->
-            <input class="p-2 m-2 rounded-lg bg-blue-500" id="todoInput" type="text" placeholder="Enter your task here" > 
-            <button class="bg-cyan-400 hover:bg-blue-500 text-white-500 p-2 pb-3 px-8 text-base m-2 rounded-full flex flex-row items-center justify-center " id="createButton">create</button>
+            <input 
+                class="h-11 flex-1 min-w-0 p-2 m-2 rounded-lg bg-blue-500" 
+                id="todoInput" 
+                type="text" 
+                placeholder="Enter your task here" > 
+            <!---h-11 to both button and input gives them equal height-->
+            <button 
+                class="h-11 bg-cyan-400 hover:bg-blue-500 hover:scale(1.075) transition duration-300 text-white-500 p-2 pb-3 px-8 text-base m-2 flex flex-row items-center justify-center" 
+                id="createButton">
+                create
+            </button>
         </div>
 
-        <div class="mx-auto w-4/5 " >
+        <div class="mx-auto w-4/5 mt-4" >
             <ul id="ulId"></ul>
         </div>
+
+        <!-- -----------------------------------internal CSS ------------------------------------ -->
+        <style>
+            .completed{
+                color: green;
+                text-decoration: line-through;
+            }
+        </style>
 
         <script>
             //1.taking button element reference
@@ -36,7 +53,10 @@
             //2.for todo app usecase we don't have to remove event listeners so we directly create function
             //3. creating event listener => on clicking call some function (){}
             createButtonref.addEventListener('click',function(){
-                const value=todoInputref.value;
+                const value=todoInputref.value.trim();
+
+                //10.
+                if(value==='') return; //stop execution of function
 
                 //5.In list for adding new element(to do task) we need new <li></li> tags
                 const li=document.createElement('li');//this creates <li>{ }</li>
