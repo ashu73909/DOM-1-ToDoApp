@@ -44,7 +44,7 @@ li{
     justify-content:space-between;
 }
 li:hover{
-    background-color: rgb(216, 113, 113);
+    background-color: rgb(70, 82, 172);
     cursor:pointer;
 }
 /* ----------------------------------improving UI of main wrapper like cards---------------------------------------- */

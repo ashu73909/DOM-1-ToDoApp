@@ -1,44 +1,54 @@
 # DOM-1-ToDoApp
-Made ToDO app to understand DOM.
 
-A simple To-Do application built to practice JavaScript DOM manipulation and basic Tailwind CSS styling.
+A simple To-Do application built using JavaScript DOM manipulation and Tailwind CSS. This project focuses on dynamic element creation, event handling, CSS class manipulation, and event delegation.
+
+## Live Demo
+
+🔗 https://ashu73909.github.io/DOM-1-ToDoApp/
 
 ## Features
 
-- Add new tasks
-- Remove tasks by clicking on them
-- Dynamic DOM updates using JavaScript
-- Basic UI styling with Tailwind CSS
-- Hover effects for task items
+- Add new tasks dynamically
+- Mark tasks as completed/uncompleted by clicking them
+- Event delegation using a single event listener
+- Input validation for empty tasks
+- Dynamic DOM updates without page refresh
+- Tailwind CSS based UI styling
 
 ## Technologies Used
 
 - HTML5
 - CSS3
-- JavaScript (DOM Manipulation)
+- JavaScript (ES6)
 - Tailwind CSS
 
 ## Concepts Practiced
 
 ### DOM Manipulation
+
 - `document.getElementById()`
 - `document.createElement()`
 - `appendChild()`
 - `innerText`
-- Event Listeners
-- Element Removal
+- `input.value`
 
-### Events
-- `click` event handling
-- Dynamic event registration
+### Event Handling
 
-### Styling
-- Flexbox
-- CSS Variables
+- `addEventListener()`
+- Click event handling
+- Event delegation
+- `event.target`
+
+### Class Manipulation
+
+- `classList.toggle()`
+
+### UI Development
+
+- Flexbox Layout
 - Tailwind Utility Classes
 - Hover Effects
-- Border Radius
-- Layout Alignment
+- Responsive Width Utilities
 
 ## How It Works
 
@@ -46,26 +56,49 @@ A simple To-Do application built to practice JavaScript DOM manipulation and bas
 2. Click the **Create** button.
 3. A new `<li>` element is created dynamically.
 4. The task is appended to the list.
-5. Clicking a task removes it from the list.
+5. Clicking a task toggles its completed state.
+6. Clicking the same task again removes the completed state.
 
-## Learning Goal
+## Event Delegation
 
-This project was created to strengthen understanding of:
+The application uses event delegation by attaching a single click event listener to the parent `<ul>` element:
 
-- JavaScript DOM APIs
-- Event handling
-- Dynamic element creation
-- Interaction between HTML, CSS, and JavaScript
-- Tailwind CSS utility classes
+```javascript
+ulRef.addEventListener('click', function(event) {
+    event.target.classList.toggle("completed");
+});
+```
+
+### Benefits
+
+- Only one event listener is required
+- Lower memory usage compared to attaching listeners to every task
+- Newly created tasks automatically inherit click behavior
+- Cleaner and easier-to-maintain code
 
 ## Future Improvements
 
 - Delete button for each task
-- Mark tasks as completed
 - Local Storage support
 - Edit existing tasks
-- Task filtering
+- Task filtering (All / Active / Completed)
+- Clear completed tasks
+- Keyboard support (Enter key)
 - Responsive design improvements
+- Task counter
 
-##Live Link : on github pages
-https://ashu73909.github.io/DOM-1-ToDoApp/
+## Project Structure
+
+```text
+DOM-1-ToDoApp/
+├── index.html
+├── style.css
+└── README.md
+```
+
+## Screenshot
+
+![alt text](image.png)
+
+---
+Built while learning JavaScript DOM manipulation and event handling.

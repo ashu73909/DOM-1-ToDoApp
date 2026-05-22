@@ -62,10 +62,6 @@
                 const li=document.createElement('li');//this creates <li>{ }</li>
                 li.innerText=value;//<li>{ value }</li> , this li tag is hanging alone in DOM ,it's not related or attached to something.
                 
-                //9. on clicking on tasks remove them (when task done scenario)
-                li.addEventListener('click',function(){
-                    li.remove();
-                })
 
                 //7. now ul is list/array
                 ulRef.appendChild(li);
@@ -74,6 +70,14 @@
                 todoInputref.value='';
 
             });
+            //optimization for memory saving .for 1000 ,1000000 tasks it has 1 eventlistener or callback function => less memory
+            // Event delegation:
+            // A single event listener on <ul> handles clicks for all current
+            // and future <li> elements, reducing the number of listeners neede
+            //9. on clicking any element inside <ul> =>that particular element<li> gets .complete class and if already have the class then .complete is removed. 
+            ulRef.addEventListener('click',function(event){
+                event.target.classList.toggle("completed");
+            })
 
         </script>
     </div>
