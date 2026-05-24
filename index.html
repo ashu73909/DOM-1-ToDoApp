@@ -12,6 +12,13 @@
 </head>
 <body>
     <div class="pt-8 pb-10  rounded-xl border-2 border-black " style="transform: translateY(-20%); background-color: oklch(39.1% 0.09 240.876);">
+        <div class="">
+            <button 
+            id="Dbutton" 
+            class="rounded-xl text-sm h-11 bg-cyan-400 hover:bg-blue-500 hover:scale(1.075) transition duration-300 text-white-500 py-0 px-2 text-base m-2 ml-0 "
+            style="background-color: black; color:white;"
+            >Dark Mode</button>
+        </div>
 
         <div class="flex flex-row items-center justify-center gap-[0.6rem]  py-[1.6] px-[0.8]  mb-5" style="background-color: rgb(33, 83, 234);">
             <!--   <input id="" placholder="" value="" type="">  -->
@@ -22,7 +29,7 @@
                 placeholder="Enter your task here" > 
             <!---h-11 to both button and input gives them equal height-->
             <button 
-                class="h-11 bg-cyan-400 hover:bg-blue-500 hover:scale(1.075) transition duration-300 text-white-500 p-2 pb-3 px-8 text-base m-2 flex flex-row items-center justify-center" 
+                class="h-11 bg-cyan-400 hover:bg-blue-500 hover:scale(1.075) transition duration-300 text-white-500 py-2 px-8 text-base m-2 " 
                 id="createButton">
                 create
             </button>
@@ -39,6 +46,15 @@
                 font-weight: 600;
                 text-decoration: line-through;
             }
+            body{
+                background-color: white;
+                color: black;
+                transition: 0.2ms;
+            }
+            body.dark-mode{
+                background-color: black;
+                color: white;
+            }
         </style>
 
         <script>
@@ -50,6 +66,9 @@
 
             //6.making ul reference
             const ulRef=document.getElementById('ulId');
+
+            //11.creating dark mode button reference
+            const modeButton=document.getElementById('Dbutton');
 
             //2.for todo app usecase we don't have to remove event listeners so we directly create function
             //3. creating event listener => on clicking call some function (){}
@@ -78,6 +97,10 @@
             //9. on clicking any element inside <ul> =>that particular element<li> gets .complete class and if already have the class then .complete is removed. 
             ulRef.addEventListener('click',function(event){
                 event.target.classList.toggle("completed");
+            })
+            //12.Added event listener for darkmode button
+            modeButton.addEventListener('click',function(){
+                document.body.classList.toggle("dark-mode");
             })
 
         </script>
