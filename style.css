@@ -87,11 +87,25 @@ body>div:first-child{ /*selects div element that is very first child of body*/
     border-radius: 999px;
     color:rgb(33, 83, 234);;
     cursor: pointer;
-    transition: transform .12s ease, box-shadow .12s ease;
+    transition: 0.3s;
     box-shadow: 0 8px 20px rgba(0,0,0,0.18);
     font-weight: 500;
 }
-
+#createButton:hover{
+    transform: scale(1.075);
+    transition: 0.3s;
+}
+#Dbutton{
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    border: none;
+    outline: none;
+}
+#Dbutton:hover{
+    transform: scale(1.075);
+    transition: 0.3s;
+}
 /* ----------------------------------<ul>---------------------------------------- */
 /*margin: 5px auto; wifth:80%; => constrain an element to 80% of its parent's width and perfectly center it horizontally on the page
   my-[5px] mx-auto w-4/5=> tailwind
