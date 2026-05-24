@@ -77,7 +77,10 @@
                 const value=todoInputref.value.trim();
 
                 //10.
-                if(value==='') return; //stop execution of function
+                if(value===''){ 
+                    alert("Write Something")
+                    return; //stop execution of function ; if nothing entered
+                }
 
                 //5.In list for adding new element(to do task) we need new <li></li> tags
                 const li=document.createElement('li');//this creates <li>{ }</li>
