@@ -40,11 +40,8 @@ li{
     border-radius: 6px;
     margin-bottom: 6px;
     padding-left: 1px;
-    display: flex;
-    justify-content:space-between;
 }
 li:hover{
-    background-color: rgb(70, 82, 172);
     cursor:pointer;
 }
 /* ----------------------------------improving UI of main wrapper like cards---------------------------------------- */
@@ -84,8 +81,8 @@ body>div:first-child{ /*selects div element that is very first child of body*/
 #createButton{
     border: none;
     outline: none;
-    border-radius: 999px;
-    color:rgb(33, 83, 234);;
+    border-radius: 6px;
+    color:rgb(251, 245, 211);
     cursor: pointer;
     transition: transform 0.3s ease;
     box-shadow: 0 8px 20px rgba(0,0,0,0.18);
@@ -103,6 +100,21 @@ body>div:first-child{ /*selects div element that is very first child of body*/
 }
 #Dbutton:hover{
     transform: scale(1.075);
+}
+.delete{
+    background-color: rgb(207, 70, 70);
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+}
+.delete:hover{
+    background-color: rgb(215, 133, 133);
+}
+#Dbutton{
+    background-color: rgb(39,37,37);
+    color: rgb(251,245,211);
 }
 /* ----------------------------------<ul>---------------------------------------- */
 /*margin: 5px auto; wifth:80%; => constrain an element to 80% of its parent's width and perfectly center it horizontally on the page
@@ -131,13 +143,16 @@ li{
     color: var(--text-color);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
+    gap: 1rem;
     transition: transform .16s ease, box-shadow .12s ease;
+}
+li input[type="checkbox"]{
+    margin-left: auto;
 }
 li:hover{
     transform: translateX(2px);
 }
+
 /* ----------------------------------responsiveness=>media---------------------------------------- */
 @media (max-width:800px) {/*less than 800px viewport */
     body{
