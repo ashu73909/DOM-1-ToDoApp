@@ -58,6 +58,7 @@
             .d-mode-color{
                 background-color:white !important;
                 color: rgb(39, 37, 37) !important;
+                transition: 0.3s !important;
             }
         </style>
 
@@ -84,29 +85,62 @@
                     alert("Write Something")
                     return; //stop execution of function ; if nothing entered
                 }
-
-                //5.In list for adding new element(to do task) we need new <li></li> tags
-                const li=document.createElement('li');//this creates <li>{ }</li>
-                li.innerText=value;//<li>{ value }</li> , this li tag is hanging alone in DOM ,it's not related or attached to something.
+                const li=document.createElement('li');
                 
-                //13. adding delete button and editBtn
+//--        ---------------------------------adding elements inside <li>--------------------------------------                --//
+                //span for Task-Text
+                const taskText=document.createElement('span');
+                taskText.textContent=value;
+                //li.appendChild(taskText);
+    
+                //edit hint
+                const editopt=document.createElement("span");
+                editopt.classList.add("edit-hint");
+                editopt.textContent="✎ dbl-click";
+                //li.appendChild(editopt);
+
+//--      ------------------------------Editing span input from input-element-----------------------------------------        --//
+
+                //Editable event listener
+                taskText.addEventListener('dblclick',()=>{ //JS event names are Lowercase
+                    taskText.contentEditable=true;
+                    taskText.focus();
+                    //Put the cursor here and make this element active ,without it user may have to click again to edit.
+                });
+
+                //save it when user click elsewhere
+                taskText.addEventListener('blur',()=>{
+                    taskText.contentEditable=false;
+                });
+                //blur :Remove focus from this element ,The cursor disappears and the element loses focus.
+                
+                
+
+//--         --------------------------------Adding dlt-btn & Deleting task ---------------------------------------             --//
+                //adding delete button
                 const dltBtn=document.createElement('button');
                 dltBtn.textContent="delete";
                 dltBtn.classList.add("delete");
                 dltBtn.addEventListener('click',()=>{
                     li.remove();
                 });
+
+//--          ------------------------------adding chk-box & Check box for task completion----------------------------------------    --//
+                //Radio Button => on span =>    <li><span></span></li>
                 const checkRadio=document.createElement('input');
                 checkRadio.type="checkbox";
-                
-                li.appendChild(checkRadio);
-                li.appendChild(dltBtn);
+                checkRadio.addEventListener('click',()=>{
+                    taskText.classList.toggle('completed');
+                });
                 
 
-                //7. now ul is list/array
+                //appends
+                li.appendChild(taskText);
+                li.appendChild(editopt);
+                li.appendChild(checkRadio);
+                li.appendChild(dltBtn);
                 ulRef.appendChild(li);
-                
-                //8.The value inside the input box was still their lets remove it after registering task
+                //The value inside the input box was still their lets remove it after registering task
                 todoInputref.value='';
 
             });
